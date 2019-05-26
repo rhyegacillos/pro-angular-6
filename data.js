@@ -23,5 +23,5 @@ module.exports = function () {
         description: "Gold-plated, diamond-studded King", price: 1200 }
     ],
     orders: [] }
-}
+};
 
