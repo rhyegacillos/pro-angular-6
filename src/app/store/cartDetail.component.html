@@ -52,7 +52,7 @@
         <button class="btn-primary m-1" routerLink="/store">Continue Shopping</button>
         <button class="btn-secondary m-1"
                 routerLink="/checkout"
-                [disabled]="cart.lines.length == 0">Checkout</button>
+                [disabled]="cart.lines.length == 0 && connected">{{connected ? 'Checkout' : 'Offline'}}</button>
       </div>
     </div>
   </div>
