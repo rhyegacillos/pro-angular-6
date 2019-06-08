@@ -21,7 +21,7 @@ export class Model {
   }
 
   saveProduct(product: Product) {
-    if (product.id == 0 || product.id == null) {
+    if (product.id === 0 || product.id === null) {
       product.id = this.generateID();
     } else {
       const index = this.products.findIndex(p => this.locator(p, product.id));
