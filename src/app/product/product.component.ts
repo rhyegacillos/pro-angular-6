@@ -10,34 +10,10 @@ import {Product} from '../product.model';
 export class ProductComponent implements OnInit {
 
   model: Model = new Model();
-  fontSizeWithUnits = '30px';
-  fontSizeWithoutUnits = '30';
 
-  getClasses(): string {
-    return this.model.getProducts().length === 5 ? 'bg-success' : 'bg-warning';
-  }
+  targetName = 'Kayak';
 
-  getClassesByProduct(key: number): string {
-    const product = this.model.getProduct(key);
-    return 'p-2 ' + (product.price < 50 ? 'bg-info' : 'bg-warning');
-  }
-
-  getClassMap(key: number): object {
-    const product = this.model.getProduct(key);
-    return {
-      'text-center bg-danger': product.name === 'kayak',
-      'bg-info': product.price < 50
-    };
-  }
-
-  getStyles(key: number) {
-    const product = this.model.getProduct(key);
-    return {
-      fontSize: '30px',
-      'margin.px': 100,
-      color: product.price > 50 ? 'red' : 'green'
-    };
-  }
+  counter = 1;
 
   constructor(ref: ApplicationRef) {
     (window as any).appRef = ref;
@@ -48,12 +24,31 @@ export class ProductComponent implements OnInit {
     return this.model.getProducts()[position];
   }
 
-  getClassesByPosition(position: number): string {
-    const product = this.getProductByPosition(position);
-    return 'p-2 ' + (product.price < 50 ? 'bg-info' : 'bg-warning');
+  getProduct(key: number): Product {
+    return this.model.getProduct(key);
   }
 
-  ngOnInit() {
+  getProducts(): Product[] {
+    return this.model.getProducts();
   }
+
+  getProductCount(): number {
+    console.log('getProductCount invoked');
+    return this.getProducts().length;
+  }
+
+  getKey(index: number, product: Product) {
+    return product.id;
+  }
+
+  get nextProduct(): Product {
+    return this.model.getProducts().shift();
+  }
+
+  getProductPrice(index: number): number {
+    return Math.floor(this.getProduct(index).price);
+  }
+
+  ngOnInit() {}
 
 }

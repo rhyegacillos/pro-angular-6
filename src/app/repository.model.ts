@@ -36,6 +36,11 @@ export class Model {
     }
   }
 
+  swapProduct() {
+    const p = this.products.shift();
+    this.products.push(new Product(p.id, p.name, p.category, p.price));
+  }
+
   private generateID(): number {
     let candidate = 100;
     while (this.getProduct(candidate) != null) {
