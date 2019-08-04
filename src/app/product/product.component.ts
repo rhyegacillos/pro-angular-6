@@ -1,54 +1,49 @@
-import {ApplicationRef, Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Model} from '../repository.model';
 import {Product} from '../product.model';
+import {NgForm} from '@angular/forms';
+import {ProductFormGroup} from './form.model';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
-export class ProductComponent implements OnInit {
+export class ProductComponent {
 
+  selectedProduct: string;
   model: Model = new Model();
-
-  targetName = 'Kayak';
-
-  counter = 1;
-
-  constructor(ref: ApplicationRef) {
-    (window as any).appRef = ref;
-    (window as any).model = this.model;
-  }
-
-  getProductByPosition(position: number): Product {
-    return this.model.getProducts()[position];
-  }
+  form: ProductFormGroup = new ProductFormGroup();
+  newProduct: Product = new Product();
+  formSubmitted = false;
 
   getProduct(key: number): Product {
-    return this.model.getProduct(key);
+    return this.getProduct(key);
   }
 
   getProducts(): Product[] {
     return this.model.getProducts();
   }
 
-  getProductCount(): number {
-    console.log('getProductCount invoked');
-    return this.getProducts().length;
+  get jsonProduct() {
+    return JSON.stringify(this.newProduct);
   }
 
-  getKey(index: number, product: Product) {
-    return product.id;
+  addProduct(p: Product) {
+    console.log('New Product: ' + this.jsonProduct);
   }
 
-  get nextProduct(): Product {
-    return this.model.getProducts().shift();
+  submitForm(form: NgForm) {
+    this.formSubmitted = true;
+    if (form.valid) {
+      this.addProduct(this.newProduct);
+      this.newProduct = new Product();
+      form.reset();
+      this.formSubmitted = false;
+    }
   }
 
-  getProductPrice(index: number): number {
-    return Math.floor(this.getProduct(index).price);
+  getSelected(product: Product): boolean {
+    return product.name === this.selectedProduct;
   }
-
-  ngOnInit() {}
-
 }
