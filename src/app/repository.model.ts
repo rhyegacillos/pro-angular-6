@@ -21,8 +21,9 @@ export class Model {
   }
 
   saveProduct(product: Product) {
-    if (product.id === 0 || product.id === null) {
+    if (product.id === 0 || product.id === null || product.id === undefined) {
       product.id = this.generateID();
+      this.products.push(product);
     } else {
       const index = this.products.findIndex(p => this.locator(p, product.id));
       this.products.splice(index, 1, product);

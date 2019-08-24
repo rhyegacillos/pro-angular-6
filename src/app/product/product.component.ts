@@ -11,7 +11,6 @@ import {ProductFormGroup} from './form.model';
 })
 export class ProductComponent {
 
-  selectedProduct: string;
   model: Model = new Model();
   form: ProductFormGroup = new ProductFormGroup();
   newProduct: Product = new Product();
@@ -25,12 +24,8 @@ export class ProductComponent {
     return this.model.getProducts();
   }
 
-  get jsonProduct() {
-    return JSON.stringify(this.newProduct);
-  }
-
   addProduct(p: Product) {
-    console.log('New Product: ' + this.jsonProduct);
+    this.model.saveProduct(p);
   }
 
   submitForm(form: NgForm) {
@@ -41,9 +36,5 @@ export class ProductComponent {
       form.reset();
       this.formSubmitted = false;
     }
-  }
-
-  getSelected(product: Product): boolean {
-    return product.name === this.selectedProduct;
   }
 }
