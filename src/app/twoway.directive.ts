@@ -1,10 +1,13 @@
 import {Directive, EventEmitter, HostBinding, HostListener, Input, OnChanges, Output, SimpleChange} from '@angular/core';
 
 @Directive({
-  selector: 'input[paModel]'
+  selector: 'input[paModel]',
+  exportAs: 'paModel'
 })
 
 export class PaModel implements OnChanges {
+  direction = 'None';
+
   @Input('paModel')
   modelProperty: string;
 
@@ -15,6 +18,7 @@ export class PaModel implements OnChanges {
     const change = changes.modelProperty;
     if (change.currentValue !== this.fieldValue) {
       this.fieldValue = changes.modelProperty.currentValue || '';
+      this.direction = 'Model';
     }
   }
 
@@ -25,5 +29,6 @@ export class PaModel implements OnChanges {
   updateValue(newValue: string) {
     this.fieldValue = newValue;
     this.update.emit(newValue);
+    this.direction = 'Element';
   }
 }
