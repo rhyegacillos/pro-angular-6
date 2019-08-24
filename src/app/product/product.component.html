@@ -4,24 +4,29 @@
     Show Table
   </label>
 </div>
-<ng-template [appPaIf]="showTable">
-  <div class="m-2">
-    <table class="table table-sm table-bordered table-striped">
-      <thead>
-      <tr><th></th><th>Name</th><th>Category</th><th>Price</th></tr>
-      </thead>
-      <tbody class="text-white">
-      <tr *ngFor="let item of getProducts(); let i = index"
-          [appAttr]="getProducts().length < 6 ? 'bg-success' : 'bg-warning'"
-          [pa-product]="item" (pa-category)="newProduct.category=$event">
-        <td>{{i + 1}}</td>
-        <td>{{item.name}}</td>
-        <td [appAttr]="item.category == 'Soccer' ? 'bg-info' : null">
-          {{item.category}}
-        </td>
-        <td [appAttr]="'bg-info'">{{item.price}}</td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-</ng-template>
+
+<div class="m-2">
+  <table class="table table-sm table-bordered table-striped" *appPaIf="showTable">
+    <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Price</th>
+    </tr>
+    </thead>
+    <tbody class="text-white">
+    <tr *ngFor="let item of getProducts(); let i = index"
+        [appAttr]="getProducts().length < 6 ? 'bg-success' : 'bg-warning'"
+        [pa-product]="item" (pa-category)="newProduct.category=$event">
+      <td>{{i + 1}}</td>
+      <td>{{item.name}}</td>
+      <td [appAttr]="item.category == 'Soccer' ? 'bg-info' : null">
+        {{item.category}}
+      </td>
+      <td [appAttr]="'bg-info'">{{item.price}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
