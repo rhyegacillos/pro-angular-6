@@ -3,7 +3,7 @@ import {Directive, Input, OnInit, TemplateRef, ViewContainerRef} from '@angular/
 @Directive({
   selector: '[appForOf]',
 })
-export class PaIteratorDirective implements OnInit{
+export class PaIteratorDirective implements OnInit {
   constructor(private container: ViewContainerRef,
               private template: TemplateRef<object>) {}
 
