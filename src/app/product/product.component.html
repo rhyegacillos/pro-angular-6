@@ -16,19 +16,14 @@
     </tr>
     </thead>
     <tbody>
-    <ng-template [appForOf]="getProducts()" let-item>
-      <tr><td colspan="4">{{item['name']}}</td></tr>
+    <ng-template [appForOf]="getProducts()" let-item let-i="index" let-odd="odd" let-even="even">
+      <tr [class.bg-info]="odd" [class.bg-warning]="even">
+        <td>{{i + 1}}</td>
+        <td>{{item['name']}}</td>
+        <td>{{item['category']}}</td>
+        <td>{{item['price']}}</td>
+      </tr>
     </ng-template>
-<!--    <tr *ngFor="let item of getProducts(); let i = index"-->
-<!--        [appAttr]="getProducts().length < 6 ? 'bg-success' : 'bg-warning'"-->
-<!--        [pa-product]="item" (pa-category)="newProduct.category=$event">-->
-<!--      <td>{{i + 1}}</td>-->
-<!--      <td>{{item.name}}</td>-->
-<!--      <td [appAttr]="item.category == 'Soccer' ? 'bg-info' : null">-->
-<!--        {{item.category}}-->
-<!--      </td>-->
-<!--      <td [appAttr]="'bg-info'">{{item.price}}</td>-->
-<!--    </tr>-->
     </tbody>
   </table>
 </div>
