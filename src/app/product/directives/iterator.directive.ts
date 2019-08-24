@@ -29,5 +29,11 @@ class PaIteratorContext {
     this.even = !this.odd;
     this.first = index === 0;
     this.last = index === total - 1;
+
+    setInterval(() => {
+      this.odd = !this.odd;
+      this.even = !this.even;
+      this.$implicit.price++;
+    }, 2000);
   }
 }
