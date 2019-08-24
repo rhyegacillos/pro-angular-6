@@ -7,6 +7,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {PaAttrDirective} from './product/directives/attr.directive';
 import {PaModel} from './product/directives/twoway.directive';
 import {PaStructureDirective} from './product/directives/structure.directive';
+import {PaIteratorDirective} from './product/directives/iterator.directive';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import {PaStructureDirective} from './product/directives/structure.directive';
     PaAttrDirective,
     PaModel,
     PaStructureDirective,
+    PaIteratorDirective,
   ],
   imports: [
     BrowserModule,
