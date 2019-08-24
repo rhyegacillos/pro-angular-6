@@ -4,8 +4,9 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {ProductComponent} from './product/product.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {PaAttrDirective} from './attr.directive';
-import {PaModel} from './twoway.directive';
+import {PaAttrDirective} from './product/directives/attr.directive';
+import {PaModel} from './product/directives/twoway.directive';
+import {PaStructureDirective} from './product/directives/structure.directive';
 
 
 @NgModule({
@@ -13,12 +14,13 @@ import {PaModel} from './twoway.directive';
     AppComponent,
     ProductComponent,
     PaAttrDirective,
-    PaModel
+    PaModel,
+    PaStructureDirective,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

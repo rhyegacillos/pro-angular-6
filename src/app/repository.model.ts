@@ -1,5 +1,5 @@
 import {SimpleDatasource} from './datasource.model';
-import {Product} from './product.model';
+import {Product} from './product/product.model';
 
 export class Model {
   private dataSource: SimpleDatasource;

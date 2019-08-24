@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Model} from '../repository.model';
-import {Product} from '../product.model';
+import {Product} from './product.model';
 import {NgForm} from '@angular/forms';
 import {ProductFormGroup} from './form.model';
 
@@ -15,6 +15,7 @@ export class ProductComponent {
   form: ProductFormGroup = new ProductFormGroup();
   newProduct: Product = new Product();
   formSubmitted = false;
+  showTable = true;
 
   getProduct(key: number): Product {
     return this.getProduct(key);
