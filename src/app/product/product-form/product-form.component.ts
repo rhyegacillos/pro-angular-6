@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {ProductFormGroup} from '../form.model';
 import {Product} from '../product.model';
 import {NgForm} from '@angular/forms';
@@ -6,7 +6,8 @@ import {NgForm} from '@angular/forms';
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
-  styleUrls: ['./product-form.component.css']
+  styleUrls: ['./product-form.component.css'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class ProductFormComponent implements OnInit {
 
