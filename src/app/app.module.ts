@@ -14,6 +14,7 @@ import { ProductTableComponent } from './product/product-table/product-table.com
 import { ProductFormComponent } from './product/product-form/product-form.component';
 import { ToggleViewComponent } from './product/toggle-view/toggle-view.component';
 import { AddTaxPipe } from './product/pipes/add-tax.pipe';
+import { CategoryFilterPipe } from './product/pipes/category-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { AddTaxPipe } from './product/pipes/add-tax.pipe';
     ProductFormComponent,
     ToggleViewComponent,
     AddTaxPipe,
+    CategoryFilterPipe,
 
   ],
   imports: [
