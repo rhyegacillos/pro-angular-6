@@ -12,34 +12,9 @@ import {ProductFormGroup} from './form.model';
 export class ProductComponent {
 
   model: Model = new Model();
-  form: ProductFormGroup = new ProductFormGroup();
-  newProduct: Product = new Product();
-  formSubmitted = false;
-  showTable = true;
-
-  getProduct(key: number): Product {
-    return this.getProduct(key);
-  }
-
-  getProducts(): Product[] {
-    return this.model.getProducts();
-  }
 
   addProduct(p: Product) {
     this.model.saveProduct(p);
   }
 
-  deleteProduct(key: number) {
-    this.model.deleteProduct(key);
-  }
-
-  submitForm(form: NgForm) {
-    this.formSubmitted = true;
-    if (form.valid) {
-      this.addProduct(this.newProduct);
-      this.newProduct = new Product();
-      form.reset();
-      this.formSubmitted = false;
-    }
-  }
 }
