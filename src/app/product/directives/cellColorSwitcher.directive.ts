@@ -1,4 +1,4 @@
-import {ContentChild, Directive, Input, OnChanges, SimpleChange} from '@angular/core';
+import {ContentChild, ContentChildren, Directive, Input, OnChanges, QueryList, SimpleChange} from '@angular/core';
 import {PaCellColor} from './cellColor.directive';
 
 @Directive({
@@ -9,12 +9,18 @@ export class PaCellColorSwitcher implements OnChanges {
   @Input('paCellDarkColor')
   modelProperty: boolean;
 
-  @ContentChild(PaCellColor, {static: false})
-  contentChild: PaCellColor;
+  @ContentChildren(PaCellColor)
+  contentChildren: QueryList<PaCellColor>;
 
   ngOnChanges(changes: {[property: string]: SimpleChange}): void {
-    if (this.contentChild != null) {
-      this.contentChild.setColor(changes.modelProperty.currentValue);
+    this.updateContentChildren(changes.modelProperty.currentValue);
+  }
+
+  private updateContentChildren(dark: boolean) {
+    if (this.contentChildren != null && dark !== undefined) {
+      this.contentChildren.forEach((child, index) => {
+        child.setColor(index % 2 ? dark : !dark);
+      });
     }
   }
 
