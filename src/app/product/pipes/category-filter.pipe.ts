@@ -8,7 +8,7 @@ import {Product} from '../product.model';
 export class CategoryFilterPipe implements PipeTransform {
 
   transform(products: Product[], category: string): any {
-    return category === undefined ? products : products.filter(p => p.category === category);
+    return category === undefined  || category === 'All' ? products : products.filter(p => p.category === category);
   }
 
 }

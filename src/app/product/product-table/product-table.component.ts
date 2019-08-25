@@ -13,6 +13,11 @@ export class ProductTableComponent {
   dataModel: Model;
 
   showTable = true;
+  categoryFilter = 'All';
+
+  dateObject: Date = new Date(2020, 1, 20);
+  dateString = '2020-02-20T00:00:00.000Z';
+  dateNumber = 1582156800000;
 
   getProduct(key: number): Product {
     return this.getProduct(key);

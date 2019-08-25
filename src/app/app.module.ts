@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {ProductComponent} from './product/product.component';
@@ -38,7 +38,7 @@ import { CategoryFilterPipe } from './product/pipes/category-filter.pipe';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: 'en-US' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
