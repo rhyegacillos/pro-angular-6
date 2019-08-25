@@ -1,10 +1,10 @@
-import {ContentChild, ContentChildren, Directive, Input, OnChanges, QueryList, SimpleChange} from '@angular/core';
+import {AfterContentInit, ContentChild, ContentChildren, Directive, Input, OnChanges, QueryList, SimpleChange} from '@angular/core';
 import {PaCellColor} from './cellColor.directive';
 
 @Directive({
   selector: 'table',
 })
-export class PaCellColorSwitcher implements OnChanges {
+export class PaCellColorSwitcher implements OnChanges, AfterContentInit {
 
   @Input('paCellDarkColor')
   modelProperty: boolean;
@@ -14,6 +14,12 @@ export class PaCellColorSwitcher implements OnChanges {
 
   ngOnChanges(changes: {[property: string]: SimpleChange}): void {
     this.updateContentChildren(changes.modelProperty.currentValue);
+  }
+
+  ngAfterContentInit(): void {
+    this.contentChildren.changes.subscribe(() => {
+      setTimeout(() => this.updateContentChildren(this.modelProperty), 0);
+    });
   }
 
   private updateContentChildren(dark: boolean) {
