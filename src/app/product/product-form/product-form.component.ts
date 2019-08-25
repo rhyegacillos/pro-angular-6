@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductFormComponent implements OnInit {
 
+  model = 'This is the model';
+
   constructor() { }
 
   ngOnInit() {
