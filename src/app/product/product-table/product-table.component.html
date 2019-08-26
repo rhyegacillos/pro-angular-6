@@ -20,19 +20,10 @@
 <div>
   <label>Number of items:</label>
   <select [value]="itemCount || 1" (change)="itemCount=$event.target.value">
-    <option *ngFor="let item of getProducts(); let i = index" [value]="i + 1">
+    <option *ngFor="let item of getProducts(); let i = index" [value]="i + 1" [selected]="getProducts().length === ( i+ 1)">
       {{i + 1}}
     </option>
   </select>
-</div>
-
-<div class="bg-info p-2 text-white">
-  <div>Date formatted as shortDate: {{ dateObject | date:"shortDate" }}</div>
-  <div>Date formatted as mediumDate: {{ dateObject | date:"mediumDate" }}</div>
-  <div>Date formatted as longDate: {{ dateObject | date:"longDate" }}</div>
-</div>
-<div class="bg-dark p-2 text-white">
-  <div>{{ getProducts() | json }}</div>
 </div>
 <table class="table table-sm table-bordered table-striped">
   <thead>
@@ -45,7 +36,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *appFor="let item of getProducts() | filter:categoryFilter | slice:0:(itemCount || 1);
+  <tr *appFor="let item of getProducts() | filter:categoryFilter | slice:0:(itemCount || getProducts().length);
   let item let i=position let odd=odd let even=even"
       [class.bg-info]="odd" [class.bg-warning]="even">
     <td style="vertical-align:middle">{{i + 1}}</td>
@@ -58,3 +49,5 @@
   </tr>
   </tbody>
 </table>
+<app-discount-editor></app-discount-editor>
+<app-discount-display></app-discount-display>
