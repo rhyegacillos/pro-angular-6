@@ -17,6 +17,7 @@ import { AddTaxPipe } from './product/pipes/add-tax.pipe';
 import { CategoryFilterPipe } from './product/pipes/category-filter.pipe';
 import { DiscountDisplayComponent } from './product/discount/discount-display/discount-display.component';
 import { DiscountEditorComponent } from './product/discount/discount-editor/discount-editor.component';
+import { DiscountPipe } from './product/pipes/discount.pipe';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { DiscountEditorComponent } from './product/discount/discount-editor/disc
     CategoryFilterPipe,
     DiscountDisplayComponent,
     DiscountEditorComponent,
+    DiscountPipe,
 
   ],
   imports: [
