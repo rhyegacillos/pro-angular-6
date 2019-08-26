@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ProductFormGroup} from '../form.model';
 import {Product} from '../product.model';
 import {NgForm} from '@angular/forms';
+import {Model} from '../../repository.model';
 
 @Component({
   selector: 'app-product-form',
@@ -15,10 +16,10 @@ export class ProductFormComponent implements OnInit {
   newProduct: Product = new Product();
   formSubmitted = false;
 
-  @Output('paNewProduct')
-  newProductEvent = new EventEmitter<Product>();
+  // @Output('paNewProduct')
+  // newProductEvent = new EventEmitter<Product>();
 
-  constructor() { }
+  constructor(private model: Model) { }
 
   ngOnInit() {
   }
@@ -26,7 +27,8 @@ export class ProductFormComponent implements OnInit {
   submitForm(form: NgForm) {
     this.formSubmitted = true;
     if (form.valid) {
-      this.newProductEvent.emit(this.newProduct);
+   //   this.newProductEvent.emit(this.newProduct);
+      this.model.saveProduct(this.newProduct);
       this.newProduct = new Product();
       form.reset();
       this.formSubmitted = false;
