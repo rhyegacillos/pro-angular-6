@@ -1,5 +1,5 @@
 import {Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnChanges, Output, SimpleChange} from '@angular/core';
-import {Product} from '../product.model';
+import {Product} from '../../model/product.model';
 
 
 @Directive({

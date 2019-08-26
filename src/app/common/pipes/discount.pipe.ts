@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {DiscountService} from '../discount/discount.service';
+import {DiscountService} from '../../components/discount/discount.service';
 
 @Pipe({
   name: 'discount',

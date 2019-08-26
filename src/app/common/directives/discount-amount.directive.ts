@@ -9,7 +9,7 @@ import {
   OnInit,
   SimpleChanges
 } from '@angular/core';
-import {DiscountService} from '../discount/discount.service';
+import {DiscountService} from '../../components/discount/discount.service';
 
 @Directive({
   selector: 'td[price]',
