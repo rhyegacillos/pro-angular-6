@@ -1,5 +1,7 @@
 import {Product} from './product/product.model';
+import {Injectable} from '@angular/core';
 
+@Injectable()
 export class SimpleDatasource {
   private data: Product[];
 

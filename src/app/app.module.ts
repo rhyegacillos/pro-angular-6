@@ -19,6 +19,8 @@ import { DiscountDisplayComponent } from './product/discount/discount-display/di
 import { DiscountEditorComponent } from './product/discount/discount-editor/discount-editor.component';
 import { DiscountPipe } from './product/pipes/discount.pipe';
 import { DiscountAmountDirective } from './product/directives/discount-amount.directive';
+import {SimpleDatasource} from './datasource.model';
+import {Model} from './repository.model';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,7 @@ import { DiscountAmountDirective } from './product/directives/discount-amount.di
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'en-US' }],
+  providers: [{ provide: LOCALE_ID, useValue: 'en-US' }, SimpleDatasource, Model],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
