@@ -10,7 +10,7 @@ export class RestDataSource {
   constructor(private http: HttpClient,  @Inject(REST_URL) private url) {}
 
   getData(): Observable<Product[]> {
-    return this.sendRequest<Product[]>('GET', this.url);
+    return this.http.jsonp<Product[]>(this.url, 'callback');
   }
 
   saveProduct(product: Product): Observable<Product> {
