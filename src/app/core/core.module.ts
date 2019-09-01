@@ -10,9 +10,10 @@ import { StatePipe } from './state.pipe';
 import {MessageService} from '../messages/message.service';
 import {Model} from '../model/repository.model';
 import {Message} from '../messages/message.model';
+import {RouterModule} from "@angular/router";
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, ModelModule],
+  imports: [BrowserModule, FormsModule, ModelModule, RouterModule],
   declarations: [TableComponent, FormComponent, StatePipe],
   exports: [ModelModule, TableComponent, FormComponent],
   providers: [{provide: SHARED_STATE,
