@@ -5,6 +5,7 @@ import {NotFoundComponent} from "./core/not-found/not-found.component";
 import {ProductCountComponent} from "./core/product-count/product-count.component";
 import {CategoryCountComponent} from "./core/category-count/category-count.component";
 import {ModelResolver} from "./model/model.resolver";
+import {TermsGuard} from "./terms.guard";
 
 const childRoutes: Routes = [
   {
@@ -20,7 +21,7 @@ const childRoutes: Routes = [
 
 const routes: Routes = [
   {path: 'form/:mode/:id', component: FormComponent, resolve: { model: ModelResolver }},
-  {path: 'form/:mode', component: FormComponent, resolve: { model: ModelResolver }},
+  {path: 'form/:mode', component: FormComponent, resolve: { model: ModelResolver }, canActivate: [TermsGuard]},
   {path: "table", component: TableComponent, children: childRoutes},
   {path: "table/:category", component: TableComponent, children: childRoutes },
   {path: '', redirectTo: '/table', pathMatch: 'full'},
